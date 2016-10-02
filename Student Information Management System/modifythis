@@ -1,0 +1,32 @@
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[34m"
+./printthis "Enter the ID to be modified : "
+echo -e "\x1b[30m"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read ID
+if grep -q -w "$ID" data.txt 
+then
+	echo "Modifying the Record of $ID" >>report	
+	grep -v -w "$ID" data.txt > temp 
+	cp temp data.txt
+	rm temp	
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[34m"
+	./printthis "Re-enter the data for $ID !!"
+	echo -e "\x1b[30m"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+	read XYZ
+	./insertthis
+else
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"	
+	./printthis "No such name present in the database"
+	echo -e "\x1b[30m"	
+	read XYZ
+fi
+
+
+

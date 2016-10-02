@@ -1,0 +1,11 @@
+clear
+echo -e "\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[31m"
+./printthis "Existing record of ID:$1 is :-"
+echo -e "\x1b[30m"
+echo -e "\n\n\n"
+./printthis "Name : $2"
+./printthis "Age : $3"
+./printthis "Marks : $4"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read XYZ

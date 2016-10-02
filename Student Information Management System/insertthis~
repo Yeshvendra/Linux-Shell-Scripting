@@ -1,0 +1,96 @@
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[34m"
+./printthis "Enter your ID :"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read ID
+while grep -q -w "$ID" data.txt
+do
+	echo -e "\x1b[31m"
+	./printthis "Invalid Input"
+	echo -e "\x1b[34m"
+	./printthis "Enter unique ID :"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	read NAME
+done
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+./printthis "ID Entered !!"
+echo " "
+./printthis "Enter your name :"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read NAME
+until [[ "$NAME" =~ ^[A-Z][^0-9] ]]
+do
+	echo -e "\x1b[31m"
+	./printthis "Invalid Input"
+	echo -e "\x1b[34m"
+	./printthis "Enter the name starting with capital and containing only alphabet :"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	read NAME
+done
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+./printthis "Name Entered !!"
+echo " "
+./printthis "Enter your age :"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read AGE
+until [[ "$AGE" =~ [^A-Z][^a-z] ]]
+do
+	echo -e "\x1b[31m"	
+	./printthis "Invalid Input"
+	echo -e "\x1b[34m"
+	./printthis "Enter the age containing only numerics :"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	read AGE 
+done
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+./printthis "Age Entered !!"
+echo " "
+./printthis "Enter your marks :"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read MARKS
+until [ $MARKS -le 100 ]
+do
+	echo -e "\x1b[31m"	
+	./printthis "Invalid Input"
+	echo -e "\x1b[34m"
+	./printthis "Enter the marks less than equal to 100 :"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	read MARKS 
+done
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+./printthis "Marks Entered !!"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read XYZ
+clear 
+echo -e "\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[31m"
+./printthis "Information you entered are :-"
+echo -e "\x1b[30m"
+./printthis "ID : $ID"
+./printthis "Name : $NAME"
+./printthis "Age : $AGE"
+./printthis "Marks : $MARKS"
+echo " "
+echo "ID : $ID" >>report
+echo "Name : $NAME" >> report
+echo "Age : $AGE" >> report
+echo "Marks : $MARKS" >> report
+echo -e "\x1b[34m"
+./printthis "Do you want to write this data ?"
+echo -e "\x1b[30m"
+echo -e "\n\n\n\n\n\n\n\n\n\n"
+read XYZ
+if [[ "$XYZ" == "y" ]]
+then
+	./printthis "Writing in the file....."	
+	echo $ID:$NAME:$AGE:$MARKS >> data.txt
+	echo "Records Stored !!" >> report
+else
+	echo "Records Rejected !!" >> report
+fi
+read XYZ

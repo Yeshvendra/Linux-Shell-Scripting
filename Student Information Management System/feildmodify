@@ -1,0 +1,121 @@
+OPT=0
+IFS=:
+clear
+echo -e "\n\n\n\n\n\n"
+echo -e "\x1b[31m"
+./printthis "Existing record is :-"
+echo -e "\x1b[30m"
+./printthis "ID : $1"
+./printthis "Name : $2"
+./printthis "Age : $3"
+./printthis "Marks : $4"
+echo -e "\n"
+echo -e "\x1b[31m"
+./printthis "Modification Menu !!"
+echo -e "\x1b[30m"
+echo -e "\n"
+./printthis "1.Modify name"
+./printthis "2.Modify age"
+./printthis "3.Modify marks"
+./printthis "4.Exit"
+echo -e "\n\n\n\n\n\n\n\n\n\n"
+read OPT
+if [ $OPT -eq 1 ]
+then 
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[34m"	
+	./printthis "Enter name :"
+	echo -e "\x1b[30m"	
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+	read X
+	until [[ "$X" =~ ^[A-Z][^0-9] ]]
+	do
+		clear
+		echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+		echo -e "\x1b[31m"
+		./printthis "Invalid Input"
+		echo -e "\x1b[34m"
+		./printthis "Enter the name starting with capital and containing only alphabet :"
+		echo -e "\x1b[30m"		
+		echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+		read X
+	done
+	echo "$1:$X:$3:$4" >> temp
+	echo "ID : $1" >>report
+	echo "Name : $X" >> report
+	echo "Age : $3" >> report
+	echo "Marks : $4" >> report
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"
+	./printthis "Record Modified !!"
+	echo -e "\x1b[30m"
+	read XYZ
+fi
+if [ $OPT -eq 2 ]
+then 
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[34m"	
+	./printthis "Enter age :"
+	echo -e "\x1b[30m"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	read X
+	until [[ "$X" =~ [^A-Z][^a-z] ]]
+	do
+		clear
+		echo -e "\n\n\n\n\n\n\n\n\n\n"	
+		echo -e "\x1b[31m"
+		./printthis "Invalid Input"
+		echo -e "\x1b[34m"
+		./printthis "Enter the age containing only numerics :"
+		echo -e "\x1b[30m"
+		echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+		read X 
+	done
+	echo "$1:$2:$X:$4" >> temp
+	echo "ID : $1">>report
+	echo "Name : $2" >> report
+	echo "Age : $X" >> report
+	echo "Marks : $4" >> report
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"
+	./printthis "Record Modified !!"
+	echo -e "\x1b[30m"
+	read XYZ
+fi
+if [ $OPT -eq 3 ]
+then 
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[34m"
+	./printthis "Enter marks :"
+	echo -e "\x1b[30m"
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+	read X
+	until [ $X -le 100 ]
+	do
+		clear
+		echo -e "\n\n\n\n\n\n\n\n\n\n"
+		echo -e "\x1b[31m"
+		./printthis "Invalid Input"
+		echo -e "\x1b[34m"
+		./printthis "Enter the marks less than equal to 100 :"
+		echo -e "\x1b[30m"
+		echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+		read X
+	done
+	echo "$1:$2:$3:$X" >> temp
+	echo "ID : $1" >> report
+	echo "Name : $2" >> report
+	echo "Age : $3" >> report
+	echo "Marks : $X" >> report
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"	
+	./printthis "Record Modified !!"
+	echo -e "\x1b[30m"
+	read XYZ
+fi

@@ -1,0 +1,68 @@
+OPT=1
+while [ $OPT -lt 6 ]
+do
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[31m"
+./printthis "STUDENT INFORMATION SYSTEM"
+echo -e "\x1b[34m"
+./printthis "MAIN MENU"
+echo -e "\x1b[30m"
+echo -e "\n"
+./printthis "1.Insert"
+./printthis "2.Modify"
+./printthis "3.Delete"
+./printthis "4.View"
+./printthis "5.View all records"
+./printthis "6.Exit"
+#echo -e "\n"
+echo -e "\x1b[31m"
+./printthis "Choose an option   :"
+echo -e "\x1b[30m"
+echo -e "\n\n\n\n\n\n\n\n"
+read OPT
+if [ $OPT -eq 1 ]
+then
+	./insertthis
+fi
+if [ $OPT -eq 2 ]
+then
+	./newmodifythis
+fi
+if [ $OPT -eq 3 ]
+then
+	./deletethis
+fi
+if [ $OPT -eq 4 ]
+then
+	./showthis
+fi
+if [ $OPT -eq 5 ]
+then
+	clear	
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	./printthis "Enter password :"
+	read -s PAS
+	if [ $PAS = "root123" ]
+	then
+		clear
+		echo -e "\x1b[31m"		
+		cat data.txt
+		echo -e "\x1b[30m"
+		read XYZ
+	else
+		clear 
+		echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+		echo -e "\x1b[34m"
+		./printthis "Sorry you entered wrong password"
+		echo -e "\x1b[30m"
+		read XYZ
+	fi
+fi
+if [ $OPT -eq 6 ]
+then
+	echo -e "\x1b[31m"
+	./printthis "Thank you for using :)"
+	echo -e "\x1b[30m"
+fi 
+done

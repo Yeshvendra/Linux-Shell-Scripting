@@ -1,0 +1,28 @@
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[34m"
+./printthis "Enter the ID to be deleted : "
+echo -e "\x1b[30m"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read ID
+if grep -q -w "$ID" data.txt 
+then
+	echo "Deleting the Record of $ID" >>report	
+	grep -v -w "$ID" data.txt > temp 
+	cp temp data.txt
+	rm temp	
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"
+	./printthis "Records of $ID is being deleted ........."
+	echo -e "\x1b[30m"
+	read XYZ
+else
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"	
+	echo -e "\x1b[31m"	
+	./printthis "No such name present in the database"
+	echo -e "\x1b[30m"
+	read XYZ
+fi
+

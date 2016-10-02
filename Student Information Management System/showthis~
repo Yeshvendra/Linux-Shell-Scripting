@@ -1,0 +1,16 @@
+IFS=:
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"
+./printthis "Enter the ID to view the details : "
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read ID
+if grep -q -w "$ID" data.txt 
+then
+	echo "Retrieving the Record of $ID" >>report	
+	./showfeild $(grep -w "$ID" data.txt)
+else
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n\n"	
+	./printthis "No such name present in the database"
+	read XYZ
+fi

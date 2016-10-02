@@ -1,0 +1,20 @@
+IFS=:
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+echo -e "\x1b[34m"
+./printthis "Enter the ID to view the details : "
+echo -e "\x1b[30m"
+echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+read ID
+if grep -q -w "$ID" data.txt 
+then
+	echo "Retrieving the Record of $ID" >>report	
+	./showfeild $(grep -w "$ID" data.txt)
+else
+	clear
+	echo -e "\n\n\n\n\n\n\n\n\n\n\n"
+	echo -e "\x1b[31m"	
+	./printthis "No such name present in the database"
+	echo -e "\x1b[30m"	
+	read XYZ
+fi
